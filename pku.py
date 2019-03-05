@@ -37,12 +37,21 @@ def parsehtml(urllist,html):
     #print(t)
     for i in t:
         urllist.append(i.get('href'))
+
+def getpdf(url):
+    realurl='https://admission.pku.edu.cn/'+url
+    r=requests.get(realurl)
+    pdf=r.content
+    with open('复试分数线.pdf','wb') as f:
+        f.write(pdf)
+    print("finish downloading")
         
 def send(urllist,flag):
     url='https://admission.pku.edu.cn/xxgk/xxgkssbm/cscj/16849dbbd425dbb5caf02d799ea1a3d2/cscj_ss_index.html'
     if urllist[0]!=url:
         print("开始发送邮件")
         sendemail(urllist[0])
+        getpdf(urllist[0])
         flag=False
     else:
         print('Nothing new')
@@ -52,11 +61,11 @@ def send(urllist,flag):
 def sendemail(url):
 
     msg_from='870407139@qq.com'                                 #发送方邮箱
-    passwd='     '                                              #填入发送方邮箱的授权码
-    receivers=['   ,   ,   ']    #收件人邮箱                               #收件人邮箱
+    passwd='                '                                   #填入发送方邮箱的授权码
+    receivers=['870407139@qq.com,503734057@qq.com']             #收件人邮箱
                             
     subject="北大研招网更新连接"                                     #主题     
-    content="根据本爬虫日以继夜的爬取北大研招网，发现有最新更新链接："+url                                                     #正文
+    content="根据本爬虫日以继夜的爬取北大研招网，发现有最新更新链接：https://admission.pku.edu.cn/"+url                                                     #正文
     msg = MIMEText(content)
     msg['Subject'] = subject
     msg['From'] = msg_from
