@@ -27,6 +27,9 @@ Language : python3
 
 11.百度热点  http://top.baidu.com/
 
+12.笔趣阁  http://www.biqukan.com
+
+13.腾讯视频 https://v.qq.com/
 
 ![github](https://raw.githubusercontent.com/chenjiandongx/mzitu/master/images/forkstar.png "github")
     
