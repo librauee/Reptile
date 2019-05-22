@@ -41,8 +41,7 @@ class Spyder_bus(object):
         ticket_info = tree.xpath('//p[@class="bus_i_t4"][2]/text()')[0]
         ticket_info = re.sub(r'(.*?：)', '', ticket_info)
         # 该公交线路公司名称
-        company_info = tree.xpath('//p[@class="bus_i_t4"][3]/text()')[0]
-
+        company_info = tree.xpath('//p[@class="bus_i_t4"]/a/text()')
         # 获取更新时间
         update_time = tree.xpath('//p[@class="bus_i_t4"][4]/text()')[0]
         update_time = re.sub(r'(.*?：)', '', update_time)
