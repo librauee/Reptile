@@ -20,6 +20,7 @@ Language : python3
   |13|    [腾讯视频](https://v.qq.com/) |   [Python3](https://github.com/librauee/Reptile/blob/master/danmucrawl.py)  |  [网络爬虫实战（四）：爬取腾讯视频电视剧弹幕](https://blog.csdn.net/lyc44813418/article/details/88930046)   |                  
  |14|   [英文短文](http://www.zuihaodaxue.cn/) |   [Python3](https://github.com/librauee/Reptile/blob/master/English_story.py)    |      |                 
  |15|   [公交信息](https://hangzhou.8684.cn/)  |   [Python3](https://github.com/librauee/Reptile/blob/master/hangzhou_bus_info.py)   |     | 
+ |16|   [网易云阅读](http://yuedu.163.com/book/category/category/2100/2110/1_0_1)  |   [Python3](https://github.com/librauee/Reptile/tree/master/%E7%BD%91%E6%98%93%E4%BA%91%E9%98%85%E8%AF%BB)   |     | 
 
 
 
