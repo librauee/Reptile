@@ -1,7 +1,7 @@
 # Spider Learning
 
 
-* Language : python3
+* Language : Python3
 * 一些爬虫的学习实例和自己的爬虫实战汇总
 
 |  Number |   Website |      Article |
