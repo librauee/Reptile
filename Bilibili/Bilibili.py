@@ -10,6 +10,7 @@ import random
 import time
 import os
 import re
+from tqdm import tqdm
 
 
 
@@ -78,7 +79,6 @@ def get_json(url,num):
 
 
 def downloader(url, path):
-    start = time.time()  # 开始时间
     size = 0
     headers = {
         'User-Agent':random.choice(user_agent)      
@@ -90,10 +90,11 @@ def downloader(url, path):
     if r.status_code == 200:
         print('[文件大小]:%0.2f MB' % (content_size / chunk_size / 1024))  # 换算单位
         if not os.path.exists(path):
+            start = time.time()  # 开始时间
             with open(path, 'wb') as f:
-                for data in r.iter_content(chunk_size=chunk_size):
+                for data in tqdm(r.iter_content(chunk_size=chunk_size)):
                     f.write(data)
-                    size += len(data)  # 已下载的文件大小
+                    #size += len(data)  # 已下载的文件大小
                     #print("已下载{:.2f}%".format(size/content_size*100))
             stop=time.time()
             print("下载本视频耗时{:.2f}s".format(stop-start))
@@ -110,10 +111,10 @@ def main():
         infos = html['data']['items']   
         for info in infos:         
             count+=1
-            #title = info['item']['description']  # 小视频的标题
+            title = info['item']['description']  # 小视频的标题
             #new_title = re.sub('[\t\|<>\?\*\\:/\[\]]', '', title)    # 去掉不符合文件命名规则的符号
             video_url = info['item']['video_playurl']  # 小视频的下载链接
-            #print(new_title)
+            print(title)
             try:
                 downloader(video_url, path="{}.mp4".format(count))
             except:
