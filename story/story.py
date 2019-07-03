@@ -46,9 +46,9 @@ def parsehtml2(html):
 
 def sendemail(url,headers):
 
-    msg_from='870407139@qq.com'                                 #发送方邮箱
-    passwd=''                                                   #填入发送方邮箱的授权码
-    receivers=['870407139@qq.com,503734057@qq.com']             #收件人邮箱
+    msg_from=''                                 #发送方邮箱
+    passwd=''                                   #填入发送方邮箱的授权码
+    receivers=[',']                             #收件人邮箱
                             
     subject='今日份的睡前小故事'                                     #主题     
     html=getHTMLText(url,headers)
