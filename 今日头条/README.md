@@ -3,7 +3,7 @@
 ![在这里插入图片描述](https://github.com/librauee/Reptile/blob/master/今日头条/web.png)
 ## Target 
 * 获取街拍图片，并下载到本地存储
-![在这里插入图片描述](https://github.com/librauee/Reptile/blob/master/Bilibili/download.png)
+![在这里插入图片描述](https://github.com/librauee/Reptile/blob/master/今日头条/download.png)
 ## Tips
 * urlencode用来拼接url链接
 * 利用了多线程或者多进程来处理
