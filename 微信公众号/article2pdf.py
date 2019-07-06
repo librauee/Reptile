@@ -12,12 +12,12 @@ import re
 
 
 # Mongo配置
-conn = MongoClient('127.0.0.1', 27017)
-db = conn.wx                    #连接wx数据库，没有则自动创建
-mongo_wx = db.article           #使用article集合，没有则自动创建
+conn=MongoClient('127.0.0.1', 27017)
+db=conn.wx                    #连接wx数据库，没有则自动创建
+mongo_wx=db.article           #使用article集合，没有则自动创建
 
 # 配置wkhtmltopdf
-config = pdfkit.configuration(wkhtmltopdf=r"F:\wkhtmltopdf\wkhtmltox-0.12.5-1.mxe-cross-win64\wkhtmltox\bin\wkhtmltopdf.exe")
+config=pdfkit.configuration(wkhtmltopdf=r"F:\wkhtmltopdf\wkhtmltox-0.12.5-1.mxe-cross-win64\wkhtmltox\bin\wkhtmltopdf.exe")
 wx_url_data=mongo_wx.find()
 data=json_normalize([comment for comment in wx_url_data])
 url_list=list(data['content_url'])
