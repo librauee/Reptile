@@ -9,6 +9,7 @@ import random
 from pymongo import MongoClient
 import time
 import numpy as np
+from bs4 import BeautifulSoup
 
 # Mongo配置
 conn=MongoClient('127.0.0.1', 27017)
@@ -59,13 +60,37 @@ user_agent=[
 
 headers={ 'User-Agent': random.choice(user_agent),   # 随机选取头部代理
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          #'Referer': 'https://www.lagou.com/jobs/list_python?city=%E6%9D%AD%E5%B7%9E&cl=false&fromSearch=true&labelWords=&suginput=&labelWords=hot'
+          'Referer': 'https://www.lagou.com/jobs/list_python?city=%E6%9D%AD%E5%B7%9E&cl=false&fromSearch=true&labelWords=&suginput=&labelWords=hot'
           }
 
 # 请求r1，获取随机代理IP
 r1=requests.get('http://47.100.21.174:8899/api/v1/proxies?limit=60').json()
+# 拉勾主页
 url1='https://www.lagou.com/jobs/list_{}?city=%E6%9D%AD%E5%B7%9E'
+# 拉勾所有职位信息
 url2='https://www.lagou.com/jobs/positionAjax.json?city=%E6%9D%AD%E5%B7%9E&needAddtionalResult=false'
+# 拉勾具体职位信息
+url3='https://www.lagou.com/jobs/{}.html'
+
+def getInfo(url):
+    headers={'User-Agent': random.choice(user_agent),
+             'Referer': 'https://www.lagou.com/jobs/list_python?city=%E6%9D%AD%E5%B7%9E&cl=false&fromSearch=true&labelWords=&suginput=&labelWords=hot',
+             'Accept-Language': 'zh-CN,zh;q=0.9'
+             }
+    proxy=random.choice(r1['proxies'])
+    resp=requests.get(url,headers=headers,proxies={'http': 'http://{}:{}'.format(proxy['ip'], proxy['port'])})
+    resp.encoding='utf-8'
+    soup=BeautifulSoup(resp.text,'html.parser')
+    text=[]
+    try:
+        t=soup.find('div',attrs={'class':'job-detail'})
+        for i in t.findAll('p'):
+            text.append(i.text)
+        return "\n".join(text)
+    except:
+        return "Error"
+    
+
 for page in range(1,31):
     print('正在爬取第{}页'.format(page))
     s=requests.session()
@@ -84,6 +109,7 @@ for page in range(1,31):
     result=r.json()
     positions=result['content']['positionResult']['result']
     for position in positions:
+        positionId=position['positionId']
         companyFullName=position['companyFullName']
         district=position['district']
         education=position['education']
@@ -98,8 +124,10 @@ for page in range(1,31):
         salary=position['salary']
         workYear=position['workYear']
         skillLables=position['skillLables']
+        detail=getInfo(url3.format(positionId))
         # 数据入库
         mongo_lagou.insert_one({
+                'companyFullName': companyFullName,
                 'district': district,
                 'education': education,
                 'financeStage': financeStage,
@@ -112,8 +140,10 @@ for page in range(1,31):
                 'positionName': positionName,
                 'salary': salary,
                 'workYear': workYear,
-                'skillLables': skillLables                
+                'skillLables': skillLables,
+                'detail': detail
                  })
+        time.sleep(3)
          # 加上随机的时间延迟
     rdtime=20*np.random.rand()
     time.sleep(rdtime)
