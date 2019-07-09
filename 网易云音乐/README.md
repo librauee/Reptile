@@ -8,4 +8,9 @@
 *  存入csv文件中，需要将 encoding改为'utf-8_sig'，不然会出现乱码
 *  UTF-8以字节为编码单元，它的字节顺序在所有系统中都是相同的，没有字节序的问题，也因此它实际上并不需要BOM(“ByteOrder Mark”), 但是UTF-8 with BOM即utf-8-sig需要提供BOM（"ByteOrder Mark"）
 * 一种无需提供post参数的apk：http://music.163.com/api/v1/resource/comments/R_SO_4_1374051000，直接加上offset作为偏移量即可
+* 需要代理IP池，要不然容易被封IP
+## TODO
+* 上述接口在偏移量达到5000之后不再能够提取数据
+* 网易云音乐的JS破解
+* 两个参数，一个是params,一个是encSecKey
 
