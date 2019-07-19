@@ -1,4 +1,5 @@
-﻿# Spider Learning
+![Hits](https://www.smirkcao.info/hit_gits/Reptile/README.md)
+# Spider Learning
 
 
 * Language : Python3
