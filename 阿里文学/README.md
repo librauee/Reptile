@@ -10,5 +10,5 @@
 ![在这里插入图片描述](https://github.com/librauee/Reptile/blob/master/阿里文学/download2.png#pic_center)
 ## Tips
 * JS解密
-* 具体详解请看[JS逆向之阿里文学](https://mp.weixin.qq.com/s/a-ORkG5XGSAP_-6GNilBbQ)
+* 具体详解请看[JS逆向之阿里文学](https://mp.weixin.qq.com/s/7Z5qB8YG0oDI857N95Z0MQ)
 
