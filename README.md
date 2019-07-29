@@ -24,7 +24,7 @@
  |15|   [公交信息](https://hangzhou.8684.cn/)  |       | 
  |16|   [网易云阅读](http://yuedu.163.com/book/category/category/2100/2110/1_0_1)  |       | 
  |17|   [今日头条](https://www.toutiao.com/search/?keyword=%E8%A1%97%E6%8B%8D)  |       | 
- |18|   [网易云音乐](https://music.163.com/)  |       | 
+ |18|   [网易云音乐](https://music.163.com/)  |     [JS逆向之网易云音乐](https://mp.weixin.qq.com/s/prahlIq527XkirDE51jMjg)  | 
  |19|   [拉勾](https://www.lagou.com/)  |       | 
  |20|   [有道翻译](http://fanyi.youdao.com/)  |    [JS逆向初探之有道翻译](https://mp.weixin.qq.com/s/a-ORkG5XGSAP_-6GNilBbQ)  | 
  |21|   [阿里文学](https://www.aliwx.com.cn/)  |   [JS逆向之阿里文学](https://mp.weixin.qq.com/s/7Z5qB8YG0oDI857N95Z0MQ)    | 
