@@ -111,7 +111,7 @@ if __name__ == '__main__':
     # shopurls=['http://www.dianping.com/shop/8301189']
     for shopurl in shopurls:
         proxy=random.choice(proxy_list)
-        response=requests.get(shopurl,headers=headers,proxies={'https': 'https://{}'.format(proxy)}).text
+        response=requests.get(shopurl,headers=headers,proxies={'https': 'https://{}'.format(proxy),'http': 'http://{}'.format(proxy)}).text
         cssurl=re.findall(r'<link rel="stylesheet" type="text/css" href="(\/\/s3plus\.meituan\.net.*?\.css)">',response)[0]
         r=decrypt_font('https:'+cssurl,response)
         # print(r)
