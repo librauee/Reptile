@@ -184,5 +184,5 @@ if __name__ == '__main__':
     BORDER=6
     username=input('请输入您的账号:')
     password=input('请输入您的密码:')
-    bili=BiliBili_Login(username,username)
+    bili=BiliBili_Login(username,password)
     bili.run()
