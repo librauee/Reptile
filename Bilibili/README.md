@@ -1,6 +1,8 @@
-# 哔哩哔哩小视频
+﻿# 哔哩哔哩小视频 & B站登录滑动验证码破解
 ## [Link](http://vc.bilibili.com/p/eden/rank#/?tab=%E5%85%A8%E9%83%A8)
 ![在这里插入图片描述](https://github.com/librauee/Reptile/blob/master/Bilibili/top.png)
+
+* [滑动验证码破解](https://mp.weixin.qq.com/s/4cvr3mqKD0jkZNVDky4y7w)
 ## Target 
 * 获取所有排行榜上的小视频，下载到本地存储
 ![在这里插入图片描述](https://github.com/librauee/Reptile/blob/master/Bilibili/vedio.png)
