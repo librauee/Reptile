@@ -18,6 +18,45 @@
 * [LPL实时比赛信息抓取](https://github.com/librauee/Reptile/blob/master/LPL/lpl.py)
 
 
+### BeutifulSoup
+
+
+### 正则表达式
+
+
+### Ajax异步加载
+* [台风历史信息抓取](https://github.com/librauee/Reptile/tree/master/Typhoon)
+
+### 代理IP
+
+
+
+
+## 中级阶段
+
+### 字体反爬
+* [猫眼电影](https://mp.weixin.qq.com/s/1aNU76w2m9vJWCcZTRpp_A)
+* [汽车之家](https://mp.weixin.qq.com/s/zIDHQ1iRSElfV5PBAokFJw)
+* [实习僧](https://mp.weixin.qq.com/s/3tyPmarn_gcsn78cSKgnAQ)
+* [大众点评](https://mp.weixin.qq.com/s/q-lIhCcaCZR9L1m9r_Jmyw)
+
+### JS逆向
+* [有道翻译](https://mp.weixin.qq.com/s/a-ORkG5XGSAP_-6GNilBbQ)
+* [网易云音乐](https://mp.weixin.qq.com/s/prahlIq527XkirDE51jMjg)
+* [阿里文学](https://mp.weixin.qq.com/s/7Z5qB8YG0oDI857N95Z0MQ)
+
+### Scrapy框架
+* [豆瓣](https://mp.weixin.qq.com/s/FmZo2cjno1HrofWGiX4c-Q)
+* [unsplash](https://mp.weixin.qq.com/s/mATihMoULt5wMYYuaJsq9A)
+
+### 反调试
+* [反调试问题](https://mp.weixin.qq.com/s/_09MQEhOP20cHIx7w_dFHw)
+
+### 验证码
+* [知网字母验证码](https://github.com/librauee/Reptile/tree/master/%E7%9F%A5%E7%BD%91)
+* [B站滑动验证码](https://github.com/librauee/Reptile/tree/master/Bilibili)
+
+
 ***
 |  Number |   Website |      Article |
  |:------:|:------:|:------:|
