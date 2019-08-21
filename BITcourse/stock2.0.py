@@ -47,11 +47,11 @@ def getHTMLText(url,code='utf8'):
     print('开始获取url信息')
     try:
         r=requests.get(url,timeout=30)
-        r.raise_for_status # 如果是200，表示返回的内容正确；如果不是200，会产生HttpError异常
+        r.raise_for_status() # 如果是200，表示返回的内容正确；如果不是200，会产生HttpError异常
         #如果已知网页的编码格式，可以修改自动识别的方式
         #r.encoding=r.apparent_encoding
         r.encoding=code
-        #print(r.text[:1000])
+        print(r.text[:1000])
         return r.text
     except:
         print ("urlError")
