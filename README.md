@@ -12,7 +12,7 @@
   * [Python网络爬虫与信息提取](https://www.icourse163.org/course/BIT-1001870001)
 * 因为网页代码的变动，课程内的部分爬虫都无法正确爬取内容，理解学习爬虫技术即可
 * [戳我看课程的爬虫代码](https://github.com/librauee/Reptile/tree/master/BITcourse)
-
+* 下面是一些重要的爬虫技术手段，有些代码辅以文章，可以拉到底部表格查阅~
 ### Xpath
 
 * [LPL实时比赛信息](https://github.com/librauee/Reptile/blob/master/LPL/lpl.py)
