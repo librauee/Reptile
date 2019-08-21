@@ -5,6 +5,20 @@
 * Language : Python3
 * 一些爬虫的学习实例和自己的爬虫实战汇总
 
+## 入门阶段
+
+* 推荐嵩天教授的Python语言课和爬虫课入门，下面是课程的慕课链接
+  * [Python语言程序设计](https://www.icourse163.org/course/BIT-268001)
+  * [Python网络爬虫与信息提取](https://www.icourse163.org/course/BIT-1001870001)
+* 因为网页代码的变动，课程内的部分爬虫都无法正确爬取内容，理解学习爬虫技术即可
+* [戳我看课程的爬虫代码](https://github.com/librauee/Reptile/tree/master/BITcourse)
+
+### Xpath
+
+* [LPL实时比赛信息抓取](https://github.com/librauee/Reptile/blob/master/LPL/lpl.py)
+
+
+***
 |  Number |   Website |      Article |
  |:------:|:------:|:------:|
  |1|    [豆瓣](https://www.douban.com/) |     [豆瓣电影排行榜](https://mp.weixin.qq.com/s/FmZo2cjno1HrofWGiX4c-Q) |                  
