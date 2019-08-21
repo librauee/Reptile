@@ -15,23 +15,34 @@
 
 ### Xpath
 
-* [LPL实时比赛信息抓取](https://github.com/librauee/Reptile/blob/master/LPL/lpl.py)
-
-
+* [LPL实时比赛信息](https://github.com/librauee/Reptile/blob/master/LPL/lpl.py)
+* [天气信息](https://github.com/librauee/Reptile/blob/master/story/weather.py)
+* [研招网](https://github.com/librauee/Reptile/tree/master/%E7%A0%94%E6%8B%9B%E7%BD%91)
 ### BeutifulSoup
-
-
+* [睡前小故事](https://github.com/librauee/Reptile/blob/master/story/story.py)
+* [英文短文](https://github.com/librauee/Reptile/blob/master/story/English_story.py)
+* [拉钩](https://github.com/librauee/Reptile/blob/master/拉钩)
+* [百度热点](https://github.com/librauee/Reptile/blob/master/%E7%99%BE%E5%BA%A6%E7%83%AD%E7%82%B9/baidu_hotspot.py)
+* [笔趣阁](https://github.com/librauee/Reptile/blob/master/%E7%AC%94%E8%B6%A3%E9%98%81/Novel.py)
 ### 正则表达式
-
-
+* [公交信息](https://github.com/librauee/Reptile/tree/master/%E4%BB%A3%E7%90%86IP)
+* [网易云阅读](https://github.com/librauee/Reptile/tree/master/%E7%BD%91%E6%98%93%E4%BA%91%E9%98%85%E8%AF%BB)
 ### Ajax异步加载
-* [台风历史信息抓取](https://github.com/librauee/Reptile/tree/master/Typhoon)
-
+* [台风历史信息](https://github.com/librauee/Reptile/tree/master/Typhoon)
+* [B站排行榜小视频](https://github.com/librauee/Reptile/blob/master/Bilibili)
+* [网易云音乐评论](https://github.com/librauee/Reptile/tree/master/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90)
+* [腾讯视频弹幕](https://github.com/librauee/Reptile/tree/master/%E8%85%BE%E8%AE%AF%E8%A7%86%E9%A2%91)
 ### 代理IP
 
+* [免费代理IP](https://github.com/librauee/Reptile/tree/master/%E4%BB%A3%E7%90%86IP)
+* [阴阳师藏宝阁](https://github.com/librauee/Reptile/blob/master/%E9%98%B4%E9%98%B3%E5%B8%88/yys_cbg.py)
+### 多线程
 
+* [今日头条图片](https://github.com/librauee/Reptile/tree/master/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1)
 
-
+### 抓包工具Fiddler
+* [微信公众号文章](https://github.com/librauee/Reptile/tree/master/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7)
+* [英雄联盟盒子文章](https://github.com/librauee/Reptile/tree/master/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%E7%9B%92%E5%AD%90)
 ## 中级阶段
 
 ### 字体反爬
@@ -48,7 +59,7 @@
 ### Scrapy框架
 * [豆瓣](https://mp.weixin.qq.com/s/FmZo2cjno1HrofWGiX4c-Q)
 * [unsplash](https://mp.weixin.qq.com/s/mATihMoULt5wMYYuaJsq9A)
-
+* [链家](https://github.com/librauee/Reptile/tree/master/%E9%93%BE%E5%AE%B6)
 ### 反调试
 * [反调试问题](https://mp.weixin.qq.com/s/_09MQEhOP20cHIx7w_dFHw)
 
