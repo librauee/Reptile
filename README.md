@@ -18,7 +18,7 @@
 * [LPL实时比赛信息](https://github.com/librauee/Reptile/blob/master/LPL/lpl.py)
 * [天气信息](https://github.com/librauee/Reptile/blob/master/story/weather.py)
 * [研招网](https://github.com/librauee/Reptile/tree/master/%E7%A0%94%E6%8B%9B%E7%BD%91)
-### BeutifulSoup
+### BeautifulSoup
 * [睡前小故事](https://github.com/librauee/Reptile/blob/master/story/story.py)
 * [英文短文](https://github.com/librauee/Reptile/blob/master/story/English_story.py)
 * [拉钩](https://github.com/librauee/Reptile/blob/master/拉钩)
