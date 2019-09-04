@@ -52,8 +52,9 @@ class weather(object):
 #        print(direct_name)
         for i in range(len(province)):
             for j in range(len(directs[i])):
+                
                 for year in range(2012,2019):
-                    tasks=[]           # 线程池
+                    tasks=[]
                     for month in range(1,13):
                         task=threading.Thread(target=self.run, args=(i,j,year,month,directs[i][j][7:-11],province[i]))
                         tasks.append(task)
@@ -65,22 +66,23 @@ class weather(object):
     
     def run(self,i,j,year,month,direct_name,province_name):
         
-        if month<10:
-            r=requests.get(self.url.format(direct_name,year,'0'+str(month)),headers=self.headers)
-        else:
-            r=requests.get(self.url.format(direct_name,year,month),headers=self.headers)
-        tree=etree.HTML(r.text)
-        average_high_tem=tree.xpath('//h5[@class="red"]/text()')[0]
-        max_high_tem=tree.xpath('//h5[@class="red"]/text()')[1]
-        average_low_tem=tree.xpath('//tr/td[2]/h5/text()')[0]
-        min_low_tem=tree.xpath('//tr/td[2]/h5/text()')[1]
-        best_quality=tree.xpath('//td[@colspan="2"]/h5/text()')[0]
-        worst_quality=tree.xpath('//td[@colspan="2"]/h5/text()')[1]
-        date=tree.xpath('//dd[@class="date"]/text()')
-        weather=tree.xpath('//dd[@class="txt1"]/text()')
-        date=[d[:5] for d in date]
-        dic=dict(zip(date,weather))
-        item1={
+        try:
+            if month<10:
+                r=requests.get(self.url.format(direct_name,year,'0'+str(month)),headers=self.headers)
+            else:
+                r=requests.get(self.url.format(direct_name,year,month),headers=self.headers)
+            tree=etree.HTML(r.text)
+            average_high_tem=tree.xpath('//h5[@class="red"]/text()')[0]
+            max_high_tem=tree.xpath('//h5[@class="red"]/text()')[1]
+            average_low_tem=tree.xpath('//tr/td[2]/h5/text()')[0]
+            min_low_tem=tree.xpath('//tr/td[2]/h5/text()')[1]
+            best_quality=tree.xpath('//td[@colspan="2"]/h5/text()')[0]
+            worst_quality=tree.xpath('//td[@colspan="2"]/h5/text()')[1]
+            date=tree.xpath('//dd[@class="date"]/text()')
+            weather=tree.xpath('//dd[@class="txt1"]/text()')
+            date=[d[:5] for d in date]
+            dic=dict(zip(date,weather))
+            item1={
                'average_high_tem':average_high_tem,
                'max_high_tem':max_high_tem,
                'average_low_tem':average_low_tem,
@@ -93,7 +95,9 @@ class weather(object):
                'weather':dic,
                'province':province_name
                            }
-        self.db['info'].insert_one(item1)
+            self.db['info1'].insert_one(item1)
+        except:
+            self.run(i,j,year,month,direct_name,province_name)
         
     
 if __name__=='__main__':
@@ -104,3 +108,4 @@ if __name__=='__main__':
     province=All_weather.get_direct(directs,name)
     print(directs)
     All_weather.get_weather(directs,name,province)
+
