@@ -9,6 +9,7 @@ import requests
 import threading
 from pymongo import MongoClient
 from lxml import etree
+import time
 
 
 class weather(object):
@@ -95,9 +96,11 @@ class weather(object):
                'weather':dic,
                'province':province_name
                            }
-            self.db['info1'].insert_one(item1)
-        except:
-            self.run(i,j,year,month,direct_name,province_name)
+            self.db['info'].insert_one(item1)
+        except Exception as e:
+            print(e)
+            #time.sleep(2)
+            #self.run(i,j,year,month,direct_name,province_name)
         
     
 if __name__=='__main__':
