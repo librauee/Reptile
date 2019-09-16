@@ -18,6 +18,7 @@
 * [LPL实时比赛信息](https://github.com/librauee/Reptile/blob/master/LPL/lpl.py)
 * [天气信息](https://github.com/librauee/Reptile/blob/master/story/weather.py)
 * [研招网](https://github.com/librauee/Reptile/tree/master/%E7%A0%94%E6%8B%9B%E7%BD%91)
+* [牛客网](https://github.com/librauee/Reptile/tree/master/%E7%89%9B%E5%AE%A2%E7%BD%91)
 ### BeautifulSoup
 * [睡前小故事](https://github.com/librauee/Reptile/blob/master/story/story.py)
 * [英文短文](https://github.com/librauee/Reptile/blob/master/story/English_story.py)
@@ -36,6 +37,7 @@
 
 * [免费代理IP](https://github.com/librauee/Reptile/tree/master/%E4%BB%A3%E7%90%86IP)
 * [阴阳师藏宝阁](https://github.com/librauee/Reptile/blob/master/%E9%98%B4%E9%98%B3%E5%B8%88/yys_cbg.py)
+
 ### 多线程
 
 * [今日头条图片](https://github.com/librauee/Reptile/tree/master/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1)
@@ -55,11 +57,12 @@
 * [有道翻译](https://mp.weixin.qq.com/s/a-ORkG5XGSAP_-6GNilBbQ)
 * [网易云音乐](https://mp.weixin.qq.com/s/prahlIq527XkirDE51jMjg)
 * [阿里文学](https://mp.weixin.qq.com/s/7Z5qB8YG0oDI857N95Z0MQ)
-
+* [梦幻西游藏宝阁](https://github.com/librauee/Reptile/tree/master/%E6%A2%A6%E5%B9%BB%E8%A5%BF%E6%B8%B8)
 ### Scrapy框架
 * [豆瓣](https://mp.weixin.qq.com/s/FmZo2cjno1HrofWGiX4c-Q)
 * [unsplash](https://mp.weixin.qq.com/s/mATihMoULt5wMYYuaJsq9A)
 * [链家](https://github.com/librauee/Reptile/tree/master/%E9%93%BE%E5%AE%B6)
+* [全国历史天气](https://github.com/librauee/Reptile/tree/master/%E5%85%A8%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%A4%A9%E6%B0%94)
 ### 反调试
 * [反调试问题](https://mp.weixin.qq.com/s/_09MQEhOP20cHIx7w_dFHw)
 
