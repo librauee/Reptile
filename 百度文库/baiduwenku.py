@@ -9,6 +9,10 @@ import requests
 import re
 import json
 import time
+import random
+from pymongo import MongoClient
+from pandas.io.json import json_normalize
+from retry import retry
 
 class Baidu_Wenku(object):
     
@@ -27,16 +31,32 @@ class Baidu_Wenku(object):
             'Sec-Fetch-Mode': 'no-cors',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
             }
-      
+     
+        
+    def get_proxy(self):
+        
+        conn=MongoClient('127.0.0.1', 27017)      
+        db=conn.proxy
+        mongo_proxy=db.good_proxy
+        proxy_data=mongo_proxy.find()
+        proxies=json_normalize([ip for ip in proxy_data])
+        proxy_list=list(proxies['ip'])
+        return proxy_list
+
+
+
+        
         
     def get_token(self):
         
         r2=requests.get(self.url1,headers=self.headers1)
-        #text=re.findall(r'FuZ2UiXX0(.*)\.1569636885',r2.text)[0]
-        self.token=re.findall('FuZ2UiXX0%3D\.(.*?)\%3D\.15696',r2.text)
+        # text=re.findall(r'FuZ2UiXX0(.*)\.1569636885',r2.text)[0]
+        
         self.bce_range=re.findall('&x-bce-range=(.*?)&token',r2.text)
-        self.timestamp=re.findall('15696(.*?)\\x22',r2.text)
-        self.timestamp='15696'+self.timestamp[0][:5]
+        # self.timestamp=re.findall('15696(.*?)\\x22',r2.text)
+        # self.timestamp='15696'+self.timestamp[0][:5]
+        self.timestamp=int(time.time())+3600
+        self.token=re.findall('FuZ2UiXX0%3D\.(.*?)\%3D\.{}'.format(self.timestamp),r2.text)
         self.host=re.findall('host%2F(.*?)&x-bce-range',r2.text)[0]
         
     def get_date(self):
@@ -47,35 +67,64 @@ class Baidu_Wenku(object):
         dt2=time.strftime("%Y-%m-%dT%H:%M:%S",time2)
         return dt1,dt2
     
-    def get_json(self,params):
+#    @retry(tries=10,delay=3)     
+#    def get_json(self,params,proxy_list):
+#        
+#        try:
+#            proxy=random.choice(proxy_list)
+#            r=requests.get(self.url2,headers=self.headers2,params=params,proxies={'https': 'https://{}'.format(proxy),'http':'http://{}'.format(proxy)})
+#            json1=r.text[8:-1]
+#            #json1=re.findall(r'wenku_1\((.*)\)',r.text)[0]
+#            data=json.loads(json1)
+#            print("___________________________________________________")
+#            body=data['body']
+#            lenth=len(body)
+#            time.sleep(random.random())
+#            return body,lenth
+#        except:
+#            print("当前页访问异常，正在重试中……")
+#            time.sleep(3*random.random())
+#            self.get_json(params)
+    
+    #@retry()   
+    def get_json(self,params,proxy_list):
         
+        # proxy=random.choice(proxy_list)
         r=requests.get(self.url2,headers=self.headers2,params=params)
-        json1=r.text[8:-1]
-        #json1=re.findall(r'wenku_1\((.*)\)',r.text)[0]
-        data=json.loads(json1)
-        print("___________________________________________________")
-        body=data['body']
-        lenth=len(body)
-        return body,lenth
+        if len(r.text)>1000:
+            json1=r.text[8:-1]
+            #json1=re.findall(r'wenku_1\((.*)\)',r.text)[0]
+            data=json.loads(json1)
+            print("___________________________________________________")
+            body=data['body']
+            lenth=len(body)
+            time.sleep(random.random())
+            return body,lenth
+        else:
+            print("当前页访问异常，正在重试中……")
+            time.sleep(10*random.random())
+            self.get_json(params,proxy_list)
+
     
     def main(self):
         
         idx=[]
         city=[]
         dt1,dt2=self.get_date()
+        proxy_list=self.get_proxy()
         for i in range(75):
             params={
                'responseContentType': 'application/javascript',
                'responseCacheControl': 'max-age=3888000',
-               'responseExpires': 'Tue, 12 Nov {} +0800'.format(dt1),
+               'responseExpires': 'Wed, 13 Nov {} +0800'.format(dt1),
                'authorization': 'bce-auth-v1/fa1126e91489401fa7cc85045ce7179e/{}Z/3600/host/{}'.format(dt2,self.host),
                'x-bce-range': self.bce_range[i],
                'token': 'eyJ0eXAiOiJKSVQiLCJ2ZXIiOiIxLjAiLCJhbGciOiJIUzI1NiIsImV4cCI6MTU2OTU5MTMyMiwidXJpIjp0cnVlLCJwYXJhbXMiOlsicmVzcG9uc2VDb250ZW50VHlwZSIsInJlc3BvbnNlQ2FjaGVDb250cm9sIiwicmVzcG9uc2VFeHBpcmVzIiwieC1iY2UtcmFuZ2UiXX0=.{}=.{}'.format(self.token[i],self.timestamp)      
         }
-            try:
-                body,lenth=self.get_json(params)
-            except:
-                pass
+
+            body,lenth=self.get_json(params,proxy_list)
+         
+            print("已经成功爬取第{}页信息".format(i+1))
             for j in range(int(lenth/2)):
                 idx.append(body[j]['c'])
                 city.append(body[j+int(lenth/2)]['c'])
@@ -83,7 +132,14 @@ class Baidu_Wenku(object):
             dic=dict(zip(idx,city))
 
             print(dic)
-            with open('file2.csv',"a") as f:
+            with open('file.csv',"a") as f:
                 [f.write('{0},{1}\n'.format(key, value)) for key, value in dic.items()]
+                
+                
+                
+if __name__=='__main__':
     
+    crawler=Baidu_Wenku()
+    crawler.get_token()
+    crawler.main()
     
