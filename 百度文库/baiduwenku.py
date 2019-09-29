@@ -86,33 +86,27 @@ class Baidu_Wenku(object):
 #            time.sleep(3*random.random())
 #            self.get_json(params)
     
-    #@retry()   
+    @retry(tries=10,delay=3)
     def get_json(self,params,proxy_list):
         
-        # proxy=random.choice(proxy_list)
-        r=requests.get(self.url2,headers=self.headers2,params=params)
-        if len(r.text)>1000:
-            json1=r.text[8:-1]
-            #json1=re.findall(r'wenku_1\((.*)\)',r.text)[0]
-            data=json.loads(json1)
-            print("___________________________________________________")
-            body=data['body']
-            lenth=len(body)
-            time.sleep(random.random())
-            return body,lenth
+        proxy=random.choice(proxy_list)
+        r=requests.get(self.url2,headers=self.headers2,params=params,proxies={'https': 'https://{}'.format(proxy),'http':'http://{}'.format(proxy)})
+        if len(r.text)>600:
+            return r.text
         else:
             print("当前页访问异常，正在重试中……")
-            time.sleep(10*random.random())
+            time.sleep(5*random.random())
             self.get_json(params,proxy_list)
+
 
     
     def main(self):
         
-        idx=[]
-        city=[]
         dt1,dt2=self.get_date()
         proxy_list=self.get_proxy()
         for i in range(75):
+            idx=[]
+            city=[]
             params={
                'responseContentType': 'application/javascript',
                'responseCacheControl': 'max-age=3888000',
@@ -122,8 +116,14 @@ class Baidu_Wenku(object):
                'token': 'eyJ0eXAiOiJKSVQiLCJ2ZXIiOiIxLjAiLCJhbGciOiJIUzI1NiIsImV4cCI6MTU2OTU5MTMyMiwidXJpIjp0cnVlLCJwYXJhbXMiOlsicmVzcG9uc2VDb250ZW50VHlwZSIsInJlc3BvbnNlQ2FjaGVDb250cm9sIiwicmVzcG9uc2VFeHBpcmVzIiwieC1iY2UtcmFuZ2UiXX0=.{}=.{}'.format(self.token[i],self.timestamp)      
         }
 
-            body,lenth=self.get_json(params,proxy_list)
-         
+            text=self.get_json(params,proxy_list)
+            
+            data=json.loads(text[text.find('{'):-1])
+            print("___________________________________________________")
+            body=data['body']
+            lenth=len(body)
+            time.sleep(random.random())
+            
             print("已经成功爬取第{}页信息".format(i+1))
             for j in range(int(lenth/2)):
                 idx.append(body[j]['c'])
