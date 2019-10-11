@@ -16,7 +16,7 @@ from io import BytesIO
 #
 #headers={
 #        
-#'Cookie': 'lzstat_uv=34255393043457271489|A0007; UM_distinctid=16b8d12117f36a-0234ce29f1e406-594c2a16-15f900-16b8d121184429; iPlanetDirectoryPro=AQIC5wM2LY4Sfcy30wzUCj%2F0Z5zr92a6lnUqJe5%2BKQKWtZ8%3D%40AAJTSQACMDE%3D%23; wsess=5tb61mru8u85ncvpb7h461dpe7',
+#'Cookie': '',
 #'Host': 'syszr.hfut.edu.cn',
 #'Referer': 'http://syszr.hfut.edu.cn/redir.php?catalog_id=121&object_id=2731',
 #'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
