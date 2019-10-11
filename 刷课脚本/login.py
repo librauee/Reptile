@@ -10,6 +10,7 @@ import re
 import tesserocr
 from PIL import Image
 from io import BytesIO
+import time
 
 #
 #url='http://syszr.hfut.edu.cn/redir.php'
@@ -84,28 +85,50 @@ def ocr():
 
 
 def login(number,password):
+    
     user_name=browser.find_element_by_id('username')
     pwd=browser.find_element_by_id('password')
     
     cap=browser.find_element_by_name('captcha')
     get_geetest_image()
-    user_name.send_keys(number)#输入手机号码
+    user_name.send_keys(number)#输入用户名
     pwd.send_keys(password)#输入密码
 
     result=ocr()
     cap.send_keys(result)
+    time.sleep(2)
     login_btn=browser.find_element_by_name('btn')#登陆按钮
     login_btn.click()#点击登陆按钮
     
-    time.sleep(5)
-    current=browser.current_window_handle#当前页面的句柄
+    time.sleep(2)
+    windows=browser.window_handles
+    browser.switch_to.window(windows[-1])
+#    current=browser.current_window_handle#当前页面的句柄
+#    browser.switch_to.window(current)
     lab=browser.find_element_by_xpath('//a[@title="实验室准入"]')
     lab.click()
-    time.sleep(1)
-    handles=browser.window_handles
-    for handle in handles:
-        if handle!=current:
-            browser.switch_to_window(handle)
+    time.sleep(2)
+    windows=browser.window_handles
+    browser.switch_to.window(windows[-1])
+    safe=browser.find_element_by_xpath('//a[@title="安全知识学习"]')
+    safe.click()
+    time.sleep(2)
+    windows=browser.window_handles
+    browser.switch_to.window(windows[-1])
+    article=browser.find_element_by_xpath('//h2[@class="zxxxy-heading"]')[0]
+    article.click()
+    time.sleep(280)
+ 
+    
+    # 每隔5分钟弹出确认窗口
+    while 1:
+        try:
+            confirm=browser.switch_to_alert()
+            print(confirm.text)
+            confirm.accept()
+        except:
+            time.sleep(2)
+            
 
     
 login('','')
