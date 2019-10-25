@@ -6,7 +6,6 @@ Created on Wed Oct 23 14:09:28 2019
 """
 import datetime
 
-
 def gen_dates(b_date, days):
     day = datetime.timedelta(days=1)
     for i in range(days):
@@ -23,11 +22,12 @@ def get_date_list(start=None, end=None):
     if start is None:
         start = datetime.datetime.strptime("2018-01-01", "%Y-%m-%d")
     if end is None:
-        end = datetime.datetime.strptime("2018-12-31", "%Y-%m-%d")
+        end = datetime.datetime.strptime("2019-8-31", "%Y-%m-%d")
     data = []
     for d in gen_dates(start, (end-start).days):
         data.append(d.strftime("%Y-%m-%d"))
     return data
 
 if __name__ == "__main__":
+    
      print(get_date_list())
