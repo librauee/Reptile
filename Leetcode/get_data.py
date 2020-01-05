@@ -35,14 +35,16 @@ def get_attitude(db):
          'origin': 'https://leetcode-cn.com'
          }
     url='https://leetcode-cn.com/graphql/'
-    for question_id,question_title_slug in question_dic.items():
+    for _,question_title_slug in question_dic.items():
         
-        data={"query":'query{{question(titleSlug:"{}") {{content,likes,difficulty,dislikes,stats,boundTopicId}}}}'.format(question_title_slug)}
+        data={"query":'query{{question(titleSlug:"{}") {{isPaidOnly,questionFrontendId,content,likes,difficulty,dislikes,stats,boundTopicId}}}}'.format(question_title_slug)}
         r=requests.post(url,headers=headers,data=data)
         question_data=r.json()['data']['question']
         # content=question_data['content']
 
         try:
+            isPaidOnly=question_data['isPaidOnly']
+            question_id=question_data['questionFrontendId']
             likes=question_data['likes']
             difficulty=question_data['difficulty']
             stats=eval(question_data['stats'])
@@ -52,6 +54,7 @@ def get_attitude(db):
             acRate=stats['acRate']
             boundTopicId=question_data['boundTopicId']
             question={
+                  'isPaidOnly':isPaidOnly,
                   'id':question_id,
                   'title':question_title_slug,
                   'likes':likes,
@@ -64,7 +67,7 @@ def get_attitude(db):
                  
                 }
             print(question)
-            db['1'].insert_one(question)
+            db['2'].insert_one(question)
         except Exception as e:
             print(e)
             pass
