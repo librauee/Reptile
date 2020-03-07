@@ -1,9 +1,12 @@
 ﻿![Hits](https://www.smirkcao.info/hit_gits/Reptile/README.md)
 # Spider Learning
-aa
 
 * Language : Python3
-* 一些爬虫的学习实例和自己的爬虫实战汇总
+* 一些爬虫的学习实例和自己的爬虫实战汇总，包含入门阶段和中级阶段的两阶段实战内容，技术手段包括XPath、BeautifulSoup、正则表达式、Ajax异步加载、代理IP、多线程、抓包工具、字体反爬、 JS逆向、Scrapy框架、反调试、验证码等。
+* 欢迎关注我的微信公众号「**老肥码码码**」，与我一起成长~
+* 内含大量Python学习资源，电子书，视频，扫码关注即可
+
+![github](https://github.com/librauee/Reptile/blob/master/image/vx_qrcode.png)
 
 ## 入门阶段
 
