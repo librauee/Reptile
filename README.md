@@ -4,7 +4,7 @@
 
 * **Language** : Python3
 * **Content** : 一些爬虫的学习实例和自己的爬虫实战汇总，包含入门阶段和中级阶段的两阶段实战内容，技术手段包括XPath、BeautifulSoup、正则表达式、Ajax异步加载、代理IP、多线程、抓包工具、字体反爬、 JS逆向、Scrapy框架、反调试、验证码等。
-* **Notice** : 欢迎关注我的微信公众号「**老肥码码码**」，与我一起成长~
+* **Notice** : 欢迎关注我的微信公众号[![follow](https://img.shields.io/badge/老肥-码码码-brightgreen.svg)](https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzkyMTAwMjQ4NA==&scene=124#wechat_redirect)，与我一起成长~
 * 内含大量Python学习资源，电子书，视频，扫码关注即可
 <img src="https://github.com/librauee/Reptile/blob/master/image/vx_qrcode.png" width = "50%" height = "50%" div align=center />
 
