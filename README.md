@@ -117,11 +117,3 @@
 
 ![github](https://raw.githubusercontent.com/chenjiandongx/mzitu/master/images/forkstar.png "github")
 
-
-* 欢迎关注我的微信公众号，记录学习，记录生活~ 
-* 内含大量Python学习资源，电子书，视频，扫码关注即可
-
-![github](https://github.com/librauee/Reptile/blob/master/image/vx_code.jpg)
-
-* 我的博客
-[Click_into_My_CSDN](http://blog.csdn.net/lyc44813418)
