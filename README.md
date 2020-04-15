@@ -30,7 +30,7 @@
 * [百度热点](https://github.com/librauee/Reptile/blob/master/%E7%99%BE%E5%BA%A6%E7%83%AD%E7%82%B9/baidu_hotspot.py)
 * [笔趣阁](https://github.com/librauee/Reptile/blob/master/%E7%AC%94%E8%B6%A3%E9%98%81/Novel.py)
 ### 正则表达式
-* [公交信息](https://github.com/librauee/Reptile/tree/master/%E4%BB%A3%E7%90%86IP)
+* [公交信息](https://github.com/librauee/Reptile/tree/master/%E5%85%AC%E4%BA%A4)
 * [网易云阅读](https://github.com/librauee/Reptile/tree/master/%E7%BD%91%E6%98%93%E4%BA%91%E9%98%85%E8%AF%BB)
 ### Ajax异步加载
 * [台风历史信息](https://github.com/librauee/Reptile/tree/master/Typhoon)
