@@ -13,7 +13,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from PIL import Image
-from io import BytesIO
+import io
+import base64
 
 
 class BiliBili_Login():
@@ -45,43 +46,20 @@ class BiliBili_Login():
         time.sleep(0.5)
         login.click()
 
-    def get_geetest_image(self,name,flag):
-        
-        """
-        获得验证码图片        
-        """
-        bottom,top,left,right=self.get_position(flag)
-        print("验证图片位置",bottom,top,left,right)
-        screenshot=self.get_screenshot()
-        captcha=screenshot.crop((left,bottom,right,top))
-        captcha.save(name)
-        return captcha
+    def get_image(self):
 
-    def get_position(self, flag):
-        
-        """
-        获取验证码图片位置
-        """
-        img=self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "canvas.geetest_canvas_slice")))
-        time.sleep(2)                
-        if flag:
-            # 执行js获取不带缺口的原图
-            self.browser.execute_script('document.getElementsByClassName("geetest_canvas_fullbg")[0].setAttribute("style", "")')
-        else:
-            # 执行js,把缺口复原
-            self.browser.execute_script('document.getElementsByClassName("geetest_canvas_fullbg")[0].setAttribute("style", "opacity: 1; display: none;")')
-        location=img.location
-        print("图片坐标为：{}".format(location))
-        size=img.size
-        print("图片大小为：{}".format(size))
-        bottom,top,left,right=location["y"],location["y"]+size["height"],location["x"],location["x"]+size["width"]
-                           
-        return (bottom,top,left,right)
+        image_ori = self.browser.execute_script(
+            'return document.getElementsByClassName("geetest_canvas_fullbg")[0].toDataURL("image/png");')
+        image_ori = image_ori.split(',')[1]
+        image_ori = base64.b64decode(image_ori)
+        image_ori = Image.open(io.BytesIO(image_ori))
 
-    def get_screenshot(self):
-        
-        screenshot=self.browser.get_screenshot_as_png()
-        return Image.open(BytesIO(screenshot))
+        image_gap = self.browser.execute_script(
+            'return document.getElementsByClassName("geetest_canvas_bg")[0].toDataURL("image/png");')
+        image_gap = image_gap.split(',')[1]
+        image_gap = base64.b64decode(image_gap)
+        image_gap = Image.open(io.BytesIO(image_gap))
+        return image_gap, image_ori
 
     def get_gap(self, image1, image2):
         
@@ -118,9 +96,9 @@ class BiliBili_Login():
         v=0
         while current<distance:
             if current<mid:
-                a=2.5
+                a=2
             else:
-                a=-3.5
+                a=-3
             v0=v
             v=v0+a*t
             move=v0*t+ 0.5*a*t*t
@@ -159,8 +137,8 @@ class BiliBili_Login():
     def run(self):
         
         self.enter()
-        image1=self.get_geetest_image("captcha1.png",True)
-        image2=self.get_geetest_image("captcha2.png",False)
+        time.sleep(1)
+        image1,image2=self.get_image()
         gap=self.get_gap(image1,image2)
         print("缺口横坐标",gap)
         track=self.get_track(gap-BORDER)
