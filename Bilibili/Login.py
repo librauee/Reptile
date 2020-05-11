@@ -47,7 +47,9 @@ class BiliBili_Login():
         login.click()
 
     def get_image(self):
-
+        """
+        获取验证码图片，包括原图和缺口图
+        """
         image_ori = self.browser.execute_script(
             'return document.getElementsByClassName("geetest_canvas_fullbg")[0].toDataURL("image/png");')
         image_ori = image_ori.split(',')[1]
