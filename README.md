@@ -1,4 +1,4 @@
-﻿![Hits](https://www.smirkcao.info/hit_gits/Reptile/README.md)![Github stars](https://img.shields.io/github/stars/librauee/Reptile.svg)
+![Github stars](https://img.shields.io/github/stars/librauee/Reptile.svg)
 ![Github stars](https://img.shields.io/github/forks/librauee/Reptile.svg)
 # Spider Learning
 
